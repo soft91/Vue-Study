@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
-    <Header></Header>
-    <router-view/>
+    <Header />
+    <router-view></router-view>
   </div>
 </template>
 <script lang="ts">

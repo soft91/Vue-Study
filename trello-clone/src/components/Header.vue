@@ -1,7 +1,6 @@
 <template>
   <div id="nav" class = "header">
     <router-link to="/" class = "main">Main</router-link>
-    <router-link to="/about">About</router-link>
   </div>
 </template>
 <script lang="ts">
