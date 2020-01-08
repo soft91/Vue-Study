@@ -65,6 +65,5 @@ export default Vue.extend({
 .addBtn {
   width: 272px;
   text-align: left;
-
 }
 </style>

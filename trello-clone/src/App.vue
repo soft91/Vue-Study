@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <Header />
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 <script lang="ts">
@@ -15,15 +15,7 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
-body{
-  margin: 0px;
-  padding: 0px;
-}
 #nav {
   text-align: center;
-}
-
-a {
-  vertical-align: middle;
 }
 </style>

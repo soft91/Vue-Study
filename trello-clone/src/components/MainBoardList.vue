@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div
-      v-for="(value, index) in listitem" 
-      :key="index"
-    >
-      <router-link :to="`/board/${value}`">{{ value }}</router-link>
-    </div>
+    <el-card
+      class="listCard"
+      shadow="always"
+    >test
+      <router-link>
+        test
+      </router-link>
+    </el-card>
   </div>
 </template>
 
@@ -17,7 +19,8 @@ export default class HelloWorld extends Vue {
   @Prop() private listitem!: string[];
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.listCard {
+  height: 80px;
+}
 </style>

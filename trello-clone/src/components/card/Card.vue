@@ -4,15 +4,15 @@
       slot="header" 
       class="clearfix"
     >
-      <span>Card name</span>
+      <span>Card Title</span>
     </div>
     <div 
-      v-for="o in 1" 
-      :key="o" 
+      v-for="o in 3"
+      :key="o"
       class="text item"
     >
       <el-card shadow="hover">
-        {{'List item ' + o }}
+        {{ 'List item ' + o }}
       </el-card>
     </div>
   </el-card>
@@ -27,11 +27,9 @@ export default Vue.extend({
   .text {
     font-size: 14px;
   }
-
   .item {
     margin-bottom: 18px;
   }
-
   .clearfix:before,
   .clearfix:after {
     display: table;
@@ -40,7 +38,6 @@ export default Vue.extend({
   .clearfix:after {
     clear: both
   }
-
   .box-card {
     width: 480px;
   }

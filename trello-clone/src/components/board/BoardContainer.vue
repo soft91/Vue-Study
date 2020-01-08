@@ -1,12 +1,20 @@
 <template>
-  <el-row :gutter="10">
-    <el-col :span="6">
-      <Card @show="toggleShow" />
-    </el-col>
-    <el-col :span="3">
-      <AddCardButton />
-    </el-col>
-  </el-row>
+  <div class="card-list">
+    <el-row :gutter="12">
+      <el-col :span="6">
+        <Card @show="toggleShow" />
+      </el-col>
+      <el-col :span="6">
+        <Card @show="toggleShow" />
+      </el-col>
+      <el-col :span="6">
+        <Card @show="toggleShow" />
+      </el-col>
+      <el-col :span="3">
+        <AddCardButton />
+      </el-col>
+    </el-row>
+  </div>
 </template>
 <script lang="ts">
 import Vue from 'vue';
@@ -26,11 +34,11 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+.card-list {
+  padding: 8px;
+}
 .el-row {
   margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 .el-col {
   border-radius: 4px;

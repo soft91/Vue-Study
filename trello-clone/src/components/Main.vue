@@ -1,53 +1,71 @@
 <template>
   <div class="home">
-    <el-row :gutter="10">
-      <el-col :span="6">
-        <MainBoardList 
-          :listitem="listitems"
-          class="list"
-          @show="listshow"
-        />
-      </el-col>
-      <el-col :span="6">
-        <el-button @click="openDialog">
-          Create new Board
-        </el-button>
-      </el-col>
-    </el-row>
-    <!-- Board를 추가하기 위한 Dialog -->
-    <el-dialog 
-      :visible.sync="dialogFormVisible"
-    >
-      <el-input 
-        v-model="boardTitle" 
-        placeholder="Add Board title" 
-        autocomplete="off" 
-        @keyup.enter="createBoard"
-      />
-      <span 
-        slot="footer" 
-        class="dialog-footer"
+    <div class="board-list">
+      <div class="board-title">
+        <span class="el-icon-user" />
+        <h3>Personal Boards</h3>
+      </div>
+      <el-row :gutter="12">
+        <el-col
+          v-for="(value, index) in listitems"
+          :key="index"
+          :span="6"
+          class="board-list-col-padding"
+        >
+          <el-card
+            class="listCard"
+            shadow="always"
+          >
+            <router-link :to="`/board/${value}`">
+              {{ value }}
+            </router-link>
+          </el-card>
+        </el-col>
+        <el-col 
+          :span="5"
+          class="board-list-col-padding"
+        >
+          <el-button
+            class="create-board-btn"
+            type="primary"
+            @click="openDialog"
+          >
+            Create new Board
+          </el-button>
+        </el-col>
+      </el-row>
+      <!-- Board를 추가하기 위한 Dialog -->
+      <el-dialog 
+        :visible.sync="dialogFormVisible"
       >
-        <el-button 
-          type="primary"
-          @click="createBoard"
-        >Create Board
-        </el-button>
-        <el-button @click="dialogFormVisible=false">Cancel</el-button>
-      </span>
-    </el-dialog>
+        <el-input 
+          v-model="boardTitle" 
+          placeholder="Add Board title" 
+          autocomplete="off"
+          @keyup.enter="createBoard"
+        />
+        <span 
+          slot="footer" 
+          class="dialog-footer"
+        >
+          <el-button 
+            type="primary"
+            @click="createBoard"
+          >
+            Create Board
+          </el-button>
+          <el-button @click="dialogFormVisible=false">Cancel</el-button>
+        </span>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import MainBoardList from '@/components/MainBoardList.vue';
 
 export default Vue.extend({
   name: 'MainBoard',
-  components: {
-    MainBoardList,
-  },
   data(){
     return {
       listshow : true,
@@ -89,14 +107,27 @@ export default Vue.extend({
 .home {
   padding: 8px;
 }
-.list {
-  width: 100%;
+.board-list {
+  width: 860px;
+  margin: 0 auto;
+}
+.board-title {
+  display: table;
+}
+.board-title > span {
+  display: table-cell;
+  font-size: 15pt;
+  padding-right: 
+}
+.board-list-col-padding {
+  padding: 6px;
+}
+.create-board-btn {
+  width: 206px;
+  height: 59px;
 }
 .el-row {
   margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 .el-col {
   border-radius: 4px;
