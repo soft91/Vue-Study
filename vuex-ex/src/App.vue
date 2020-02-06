@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <p>{{ massage }}</p>
+    <EditForm />
   </div>
 </template>
 
 <script>
+import EditForm from './components/EditForm.vue';
+
 export default {
-  created(){
-    // 스토어의 상태 확인
-    console.log(this.$store.state.count);
-    // 스토어의 상태 변경
-    this.$store.commit('increment');
+  name: 'app',
+  components: { EditForm },
+  computed: {
+    message(){
+      return this.$store.getters.message
+    }
   }
 }
 </script>
