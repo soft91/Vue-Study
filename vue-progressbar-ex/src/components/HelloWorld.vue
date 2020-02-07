@@ -30,6 +30,7 @@ export default {
         this.increaseNumber += 1;
         if (this.increaseNumber > 100) {
           this.increaseNumber = 100;
+          this.message = "Complete";
           clearInterval(increasePercentage);
         } else if (this.increaseNumber == 35) {
           this.message = 'Resource Loading...';
