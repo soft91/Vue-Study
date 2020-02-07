@@ -4,7 +4,7 @@
     <br>
     <span>{{ message }}</span>
     <br>
-    <el-button @click="increase">click</el-button>
+    <el-button @click="test">click</el-button>
   </div>
 </template>
 
@@ -25,9 +25,14 @@ export default {
     }
   },
   methods: {
-    increase(){
+    increase(obj){
+
+      // obj = time(sec)
+      debugger;
+      const time = 100 - (this.increaseNumber / obj);
+
       const increasePercentage = setInterval(() => {
-        this.increaseNumber += 1;
+        this.increaseNumber += time;
         if (this.increaseNumber > 100) {
           this.increaseNumber = 100;
           this.message = "Complete";
@@ -39,7 +44,23 @@ export default {
         } else if (this.increaseNumber == 88) {
           this.message = 'Resource Loading...3';
         }
-      }, 100);
+      }, obj);
+    },
+    test(){
+      let beforeload = (new Date()).getTime();
+
+      setTimeout(()=> {
+        var afterload = (new Date()).getTime();
+        this.increase((afterload - beforeload) / 1000);
+      }, 1000);
+      setTimeout(()=> {
+        var afterload = (new Date()).getTime();
+        this.increase((afterload - beforeload) / 1000);
+      }, 3000);
+      setTimeout(()=> {
+        var afterload = (new Date()).getTime(); 
+        this.increase((afterload - beforeload) / 1000);
+      }, 6000);
     }
   }
 }
