@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <p>{{ massage }}</p>
+    <p>{{ message }}</p>
     <EditForm />
   </div>
 </template>

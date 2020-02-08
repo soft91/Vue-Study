@@ -8,13 +8,13 @@ const store = new Vuex.Store({
     // state: 스토어에서 관리하고 있는 상태를 나타내며, 컴포넌트로 이야기하면 data와 같다.
     // mutations 이외의 장소에서는 변경하면 안됨!
     state: {
-        massage: 'init message'
+        message: 'init message'
     },
     // getters: 스테이트를 추출하기 위한 산출 데이터, 컴포넌트로 이야기하면 computed와 methods의 중간 기능.
     getters: {
         // 단순하게 상태 리턴하기
-        massage(state){
-            return state.massage;
+        message(state){
+            return state.message;
         }
         // 리스트 요소들의 price 속성을 기반으로 최댓값 찾기
     },
@@ -23,7 +23,7 @@ const store = new Vuex.Store({
     mutations: {
         // 메세지를 변경하는 뮤테이션
         setMessage(state, payload){
-            state.massage = payload.massage;
+            state.message = payload.message;
         }
     },
     // actions: 비동기 처리를 포함할 수 있는 메서드. 데이터를 가공하거나 비동기 처리 후 결과를 mutation으로 커밋.
