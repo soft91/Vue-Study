@@ -2,7 +2,7 @@
   <div class="hello">
     <h2>Option 1</h2> Only one can be selected
     <ul>
-      <li v-for="(item, index) in items" :key="index" :class="{highlight:item.id == selected}" @click="selected = item.id" draggable="true" @dragstart="dragStart()">{{item.id}}</li>
+      <li :id="item.id" v-for="(item, index) in items" :key="index" :class="{highlight:item.id == selected}" @click="selected = item.id" draggable="true" @dragstart="dragStart()">{{item.id}}</li>
     </ul>
     <div class="box" droppable="true" @dragover="dragOver()" @drop="drop()"></div>
   </div>
@@ -27,8 +27,7 @@ export default {
   },
   methods:{
     dragStart(){ 
-      let obj = event.target;
-      event.dataTransfer.setDragImage(obj,0,0);
+      event.dataTransfer.setData("text/html", event.target.id);
     },
     drag(){
       console.log("drag");
@@ -39,6 +38,11 @@ export default {
     },
     drop(){
       console.log("drop");
+      event.preventDefault();
+      const data = event.dataTransfer.getData("text/html");
+      const nodeCopy = document.getElementById(data).cloneNode(true);
+      nodeCopy.id = "newId"; /* We cannot use the same ID */
+      event.target.appendChild(nodeCopy);
     }
   }
 }
