@@ -6,11 +6,17 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
 
+  @Component({})
   export default class Count extends Vue {
-    plus():void{
-      
+    plus(): void {
+      this.$store.dispatch('doPlusCountAction', 'plus');
+    }
+
+    minus(): void {
+      this.$store.dispatch('doMinusCountAction', 'minus');
     }
   }
 </script>

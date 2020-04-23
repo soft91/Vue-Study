@@ -9,12 +9,13 @@ export default new Vuex.Store({
   },
   mutations: {
     // Count의 +를 하는 메소드
-    plusCount(state, payload) {
-      state.count = payload++;
+    plusCount(state) {
+      state.count++;
     },
     // Count의 -를 하는 메소드
-    minusCount(state, payload) { 
-      state.count = payload--;
+    minusCount(state) {
+      if(state.count === 0) return;
+      state.count--;
     }
   },
   actions: {
