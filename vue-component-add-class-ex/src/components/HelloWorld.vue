@@ -2,7 +2,17 @@
   <div class="hello">
     <h2>Option 1</h2> Only one can be selected
     <ul>
-      <li v-for="(item, index) in items" :key="index" :class="{highlight:item.id == selected}" @click="selected = item.id" draggable="true" @dragstart="dragStart()">{{item.id}}</li>
+      <li 
+        v-for="(item, index) in items" 
+        :id="item.id" 
+        :key="index" 
+        :class="{highlight:item.id == selected}" 
+        draggable="true" 
+        @click="selected = item.id" 
+        @dragstart="dragStart()"
+      >
+        {{item.id}}
+      </li>
     </ul>
     <div class="box" droppable="true" @dragover="dragOver()" @drop="drop()"></div>
   </div>
@@ -21,30 +31,29 @@ export default {
   data(){
     return {
       items,
-      selected: undefined,
-      selected2: []
+      selected: undefined
     }
   },
   methods:{
     dragStart(){ 
-      let obj = event.target;
-      event.dataTransfer.setDragImage(obj,0,0);
+      event.dataTransfer.setData("text/html", event.target.id);
     },
     drag(){
-      console.log("drag");
     },
     dragOver(){
       event.preventDefault();
-      console.log('dragOver');      
     },
     drop(){
-      console.log("drop");
+      event.preventDefault();
+      const data = event.dataTransfer.getData("text/html");
+      const nodeCopy = document.getElementById(data).cloneNode(true);
+      nodeCopy.id = "newId";
+      event.target.appendChild(nodeCopy);
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box {
   height: 500px;
