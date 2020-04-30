@@ -5,11 +5,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    openCreateModal: false
   },
   mutations: {
+    toggleCreateNoteModal (state) {
+      state.openCreateModal = true;
+    }
   },
   actions: {
+    toggleCreateNoteModal ({ commit }) {
+      commit('toggleCreateNoteModal')
+    }
   },
   modules: {
+
   }
 })
