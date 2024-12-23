@@ -8,7 +8,7 @@ export default new Vuex.Store({
     openCreateModal: false
   },
   mutations: {
-    toggleCreateNoteModal (state) {
+    toggleCreateNoteModal (state: any) {
       state.openCreateModal = true;
     }
   },

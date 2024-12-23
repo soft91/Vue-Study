@@ -1,14 +1,21 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <button @click="test">Emit Test</button>
   </div>
 </template>
 
 <script>
+const eventBus = new Vue();
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+    test: function(){
+      eventBus.$emit('emitTest');
+    }
   }
 }
 </script>

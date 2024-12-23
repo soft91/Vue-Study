@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <HelloWorld msg="헬로우 월드 컴포넌트에 데이터 통신"/>
+    <h1> {{ msg }} </h1>
+    <HelloWorld v-on:emitTest="changeMessageTest"/>
   </div>
 </template>
 
@@ -11,6 +12,16 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      msg : '메세지를 변경해 봅시다!!'
+    }
+  },
+  methods: {
+    changeMessageTest: function() {
+      this.msg = '메세지가 변경 되었습니다!!'
+    }
   }
 }
 </script>
